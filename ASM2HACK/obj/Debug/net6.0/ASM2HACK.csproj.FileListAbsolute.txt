@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\bin\Debug\net6.0\ASM2HACK.exe
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\bin\Debug\net6.0\ASM2HACK.deps.json
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\bin\Debug\net6.0\ASM2HACK.runtimeconfig.json
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\bin\Debug\net6.0\ASM2HACK.dll
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\bin\Debug\net6.0\ASM2HACK.pdb
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.AssemblyInfo.cs
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.dll
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\refint\ASM2HACK.dll
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.pdb
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ASM2HACK.genruntimeconfig.cache
+C:\Users\User\Desktop\VS Projects\ASM2HACK\ASM2HACK\obj\Debug\net6.0\ref\ASM2HACK.dll
