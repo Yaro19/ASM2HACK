@@ -41,7 +41,8 @@
             // 
             this.AssembleBtn.Enabled = false;
             this.AssembleBtn.Font = new System.Drawing.Font("Gotham Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AssembleBtn.Location = new System.Drawing.Point(277, 333);
+            this.AssembleBtn.ForeColor = System.Drawing.Color.Black;
+            this.AssembleBtn.Location = new System.Drawing.Point(282, 333);
             this.AssembleBtn.Name = "AssembleBtn";
             this.AssembleBtn.Size = new System.Drawing.Size(175, 71);
             this.AssembleBtn.TabIndex = 0;
@@ -96,10 +97,10 @@
             // 
             // DebugTextBox
             // 
-            this.DebugTextBox.Location = new System.Drawing.Point(29, 493);
+            this.DebugTextBox.Location = new System.Drawing.Point(12, 493);
             this.DebugTextBox.Name = "DebugTextBox";
             this.DebugTextBox.ReadOnly = true;
-            this.DebugTextBox.Size = new System.Drawing.Size(711, 27);
+            this.DebugTextBox.Size = new System.Drawing.Size(713, 27);
             this.DebugTextBox.TabIndex = 5;
             // 
             // Form1

@@ -76,7 +76,13 @@ namespace ASM2HACK
             labelsDictionary.Add("KBD", 24576);
 
             this.filePath = filePath;
-            this.uncommented_File = CleanCommentsAndSpaces();
+
+            List<string> uncommentedFile = CleanCommentsAndSpaces();
+
+            List<string> fileWithoutLabels = CleanAndReplaceLabels(uncommentedFile);
+
+            this.uncommented_File = fileWithoutLabels;
+
         }
 
         #endregion

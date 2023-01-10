@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,9 +34,19 @@ namespace ASM2HACK
             assembler.Assemble();
             DebugTextBox.Text = "Done!";
 
+            int counter = 0;
+
             foreach (var item in assembler.Hack_file)
             {
-                outPutTextBox.Text += item + "\r\n";
+                if (counter > 500)
+                {
+                    outPutTextBox.Text += "...\r\n";
+                    break;
+                }
+
+                outPutTextBox.Text += counter + " | " + item + "\r\n";
+
+                counter++;
             }
 
             AssembleBtn.Enabled = false;
@@ -43,7 +55,7 @@ namespace ASM2HACK
         }
 
         private void FindFile_btn_Click(object sender, EventArgs e)
-        {       
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "asm files (*.asm)|*.asm";
 
@@ -55,7 +67,7 @@ namespace ASM2HACK
             RAM ram = RAM.Instance;
 
             ram.Clean();
-            
+
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -65,9 +77,18 @@ namespace ASM2HACK
 
                 assembler = new Assembler(filePath);
 
+                int counter = 0;
+
                 foreach (var item in assembler.Uncommented_File)
                 {
-                    UserASMCode_TextBox.Text += item + "\r\n";
+                    if (counter > 500)
+                    {
+                        UserASMCode_TextBox.Text += "...\r\n";
+                        break;
+                    }
+
+                    UserASMCode_TextBox.Text += counter + " | " + item + "\r\n";
+                    counter++;
                 }
             }
         }
@@ -76,11 +97,11 @@ namespace ASM2HACK
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
-            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {       
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
                 string outputFilePath = folderBrowserDialog.SelectedPath + @"\output.hack";
 
-                DebugTextBox.Text = "Il tuo file .hack e' stato salvato con successo";       
+                DebugTextBox.Text = "Il tuo file .hack e' stato salvato con successo";
 
                 File.WriteAllLines(outputFilePath, assembler.Hack_file);
             }
