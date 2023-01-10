@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ASM2HACK.csharp_files
 {
-    
+    //TODO: realizzare l'avviso di sovrascrittura del file (se e' presente)
+    //TODO: se l'utente seleziona uno nuvo file allora svuota la textbox e hack_textbox
     public static class Program
     {
 

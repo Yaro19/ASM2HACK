@@ -15,7 +15,6 @@ namespace ASM2HACK
     {
         Assembler assembler;
         string filePath;
-        string fileDir;
 
         public Form1()
         {
@@ -31,15 +30,19 @@ namespace ASM2HACK
         private void AssembleBtn_Click(object sender, EventArgs e)
         {
             assembler.Assemble();
+            DebugTextBox.Text = "Done!";
 
+            foreach (var item in assembler.Hack_file)
+            {
+                outPutTextBox.Text += item + "\r\n";
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FindFile_btn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "asm files (*.asm)|*.asm";
-
-           
+         
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -48,22 +51,26 @@ namespace ASM2HACK
 
                 assembler = new Assembler(filePath);
 
-                UserASMCode_TextBox.Text = "***Il tuo asm***";
+                //TODO: vedere il problema del 
 
-
+                foreach (var item in assembler.Uncommented_File)
+                {
+                    UserASMCode_TextBox.Text += item + "\r\n";
+                }
             }
         }
 
         private void Save_btn_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            string fileName = folderBrowserDialog.Description;
 
             if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                fileDir = folderBrowserDialog.SelectedPath + @"\"+fileName+".hack";
-                //TODO: risolvere questo
-                File.WriteAllLines(filePath, assembler.Hack_file);
+            {       
+                string outputFilePath = folderBrowserDialog.SelectedPath + @"\output.hack";
+
+                DebugTextBox.Text = outputFilePath;            
+
+                File.WriteAllLines(outputFilePath, assembler.Hack_file);
             }
 
         }

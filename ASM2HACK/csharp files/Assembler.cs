@@ -96,6 +96,8 @@ namespace ASM2HACK
 
             List<string> outputFile = ConvertToBinInstrucions(fileWithoutLabels);
 
+            hack_file = outputFile;
+
             return hack_file;
         }
 
@@ -145,7 +147,7 @@ namespace ASM2HACK
                 }
 
                 //Debug
-                //File.WriteAllLines(filePath, programWithoutSpaces);
+                File.WriteAllLines(filePath, programWithoutSpaces);
             }
             catch (FileNotFoundException ex)
             {

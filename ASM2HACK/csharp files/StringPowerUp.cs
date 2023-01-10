@@ -53,7 +53,7 @@ namespace ASM2HACK
         }
 
         /// <summary>
-        /// Appends a char at beginning of a string
+        /// Appends a char at the beginning of a string
         /// </summary>
         /// <param name="value"></param>
         /// <param name="c"></param>
@@ -74,8 +74,8 @@ namespace ASM2HACK
         }
 
         /// <summary>
-        /// Returns logic and between value and secondArg, but 
-        /// secondArg must be longer (or equal) than value.
+        /// Returns logic AND between value and secondArg, but 
+        /// secondArg must be longer (or equal to) than value.
         /// ARGUMENTS MUST BE BINARY DIGIT
         /// Result is from right to left binary digit string
         /// </summary>
@@ -120,7 +120,7 @@ namespace ASM2HACK
         }
 
         /// <summary>
-        /// Removes all chars after c (argument), if string 
+        /// Removes all chars after c (argument), if the string 
         /// does not contain c then it returns the same string
         /// </summary>
         /// <param name="value"></param>
