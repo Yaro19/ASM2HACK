@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +32,38 @@ namespace ASM2HACK
             //rappresenta la RAM.
             //Se value == true, significa che la cella non 
             //puo' essere usata
+            Fill();
+        }
+
+        public int GetFreeCell()
+        {
+            int result = 16;
+
+            for (int i = 16; i < numberOfCells; i++)
+            {
+                if (!cells[i])
+                {
+                    result = i;
+                    cells[i] = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public void Clean()
+        {
+            foreach (var item in cells.Keys)
+            {
+                cells.Remove(item);
+            }
+
+            Fill();
+        }
+
+        private void Fill()
+        {
             for (int i = 0; i < numberOfCells; i++)
             {
                 if (i < 16)
@@ -43,27 +74,8 @@ namespace ASM2HACK
                 {
                     cells.Add(i, false);
                 }
-                
+
             }
-        }
-
-        public int GetFreeCell()
-        {
-            int result = 16;
-
-            foreach (var item in cells)
-            {
-                if(!item.Value)
-                {
-                    result = item.Key;
-
-                    cells[item.Key] = true;
-
-                    break;
-                }
-            }
-
-            return result;
         }
     }
 }

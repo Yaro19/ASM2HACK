@@ -43,7 +43,7 @@ namespace ASM2HACK
 
         //Deve contenere le lables con il loro rispettivo indice
         private Dictionary<string, int> labelsDictionary = new Dictionary<string, int>();
-
+        
         #endregion
 
         #region Constructors
@@ -100,7 +100,6 @@ namespace ASM2HACK
 
             return hack_file;
         }
-
 
         #endregion
 

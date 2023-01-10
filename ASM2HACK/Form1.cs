@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace ASM2HACK
 
         public Form1()
         {
-
             InitializeComponent();
         }
 
@@ -36,22 +36,34 @@ namespace ASM2HACK
             {
                 outPutTextBox.Text += item + "\r\n";
             }
+
+            AssembleBtn.Enabled = false;
+
+            Save_btn.Enabled = true;
         }
 
         private void FindFile_btn_Click(object sender, EventArgs e)
-        {
+        {       
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "asm files (*.asm)|*.asm";
-         
+
+            //Cleaning
+            UserASMCode_TextBox.Text = "";
+
+            outPutTextBox.Text = "";
+
+            RAM ram = RAM.Instance;
+
+            ram.Clean();
+            
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 AssembleBtn.Enabled = true;
+
                 filePath = openFileDialog.FileName;
 
                 assembler = new Assembler(filePath);
-
-                //TODO: vedere il problema del 
 
                 foreach (var item in assembler.Uncommented_File)
                 {
@@ -68,10 +80,12 @@ namespace ASM2HACK
             {       
                 string outputFilePath = folderBrowserDialog.SelectedPath + @"\output.hack";
 
-                DebugTextBox.Text = outputFilePath;            
+                DebugTextBox.Text = "Il tuo file .hack e' stato salvato con successo";       
 
                 File.WriteAllLines(outputFilePath, assembler.Hack_file);
             }
+
+            Save_btn.Enabled = false;
 
         }
     }

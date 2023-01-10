@@ -53,6 +53,7 @@
             // 
             this.outPutTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.outPutTextBox.Location = new System.Drawing.Point(487, 54);
+            this.outPutTextBox.MaxLength = 1000000000;
             this.outPutTextBox.Multiline = true;
             this.outPutTextBox.Name = "outPutTextBox";
             this.outPutTextBox.ReadOnly = true;
@@ -74,6 +75,7 @@
             // 
             this.UserASMCode_TextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.UserASMCode_TextBox.Location = new System.Drawing.Point(12, 54);
+            this.UserASMCode_TextBox.MaxLength = 100000000;
             this.UserASMCode_TextBox.Multiline = true;
             this.UserASMCode_TextBox.Name = "UserASMCode_TextBox";
             this.UserASMCode_TextBox.ReadOnly = true;
@@ -83,6 +85,7 @@
             // 
             // Save_btn
             // 
+            this.Save_btn.Enabled = false;
             this.Save_btn.Location = new System.Drawing.Point(542, 430);
             this.Save_btn.Name = "Save_btn";
             this.Save_btn.Size = new System.Drawing.Size(136, 57);
