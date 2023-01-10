@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ybZxjTT2Eq6IDHSqLAK2VFfzj02pxl++9Cw54nj+dBfObdmfqOTpyT8Unc3kmihz6tdA9HqmDcbxP2ctqzsQ4Q==",
+  "dgSpecHash": "Rfq4ts4eX6rxmdBJoNwcWAvtZp1B46PuEYPp6gWsKT5PqDLHppUOYZ0MabL3Ez7Tp1hTwe+3ileHJoyWtCftcQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Desktop\\VS Projects\\ASM2HACK\\ASM2HACK\\ASM2HACK.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.27\\microsoft.windows.sdk.net.ref.10.0.22621.27.nupkg.sha512"
+  ],
   "logs": []
 }

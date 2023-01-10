@@ -142,12 +142,6 @@ namespace ASM2HACK
             }
         }
 
-        //TODO: implementare questa
-        //public static string RemoveFromTo(this string value, char from, char to)
-        //{
-        //    return "";
-        //}
-
         public static string RemoveBefore(this string value, char c)
         {
             string temp = "";
@@ -173,6 +167,5 @@ namespace ASM2HACK
                 return value;
             }
         }
-
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ASM2HACK
 {
@@ -10,15 +11,35 @@ namespace ASM2HACK
     {
         #region Fields and properties
 
-        private string hackPath;
-
-        public string HackPath { get => hackPath; }
-
         //il path del file .asm
         private string filePath;
 
-        //la directory del file .asm
-        private string directoryPath;
+        private List<string> hack_file, uncommented_File;
+
+        public List<string> Uncommented_File
+        {
+            get
+            {
+                return this.uncommented_File;
+            }
+        }
+
+        public List<string> Hack_file
+        {
+            get 
+            { 
+                if(this.hack_file != null)
+                {
+                    return this.hack_file;
+                }
+                else
+                {
+                    var temp = new List<string>();
+                    temp.Add("Call Assemble()");
+                    return temp;
+                }
+            }    
+        }
 
         //Deve contenere le lables con il loro rispettivo indice
         private Dictionary<string, int> labelsDictionary = new Dictionary<string, int>();
@@ -32,15 +53,7 @@ namespace ASM2HACK
 
         }
 
-        /// <summary>
-        /// Prende tre parametri:
-        /// 1.filePath
-        /// 2.directoryPath
-        /// 3.Nome del file .hack
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="directoryPath"></param>
-        public Assembler(string filePath, string directoryPath, string nameHackFile)
+        public Assembler(string filePath)
         {
             //Inizializzazione con le labels di default
             labelsDictionary.Add("R0", 0);
@@ -62,9 +75,8 @@ namespace ASM2HACK
             labelsDictionary.Add("SCREEN", 16384);
             labelsDictionary.Add("KBD", 24576);
 
-            this.hackPath = directoryPath + @"\" + nameHackFile + ".hack";
             this.filePath = filePath;
-            this.directoryPath = directoryPath;
+            this.uncommented_File = CleanCommentsAndSpaces();
         }
 
         #endregion
@@ -76,15 +88,15 @@ namespace ASM2HACK
         /// le istruzioni in hack
         /// </summary>
         /// 
-        public void Assemble()
+        public List<string> Assemble()
         {
-            List<string> uncommentFile = CleanCommentsAndSpaces();
+            List<string> uncommentedFile = CleanCommentsAndSpaces();
 
-            List<string> fileWithoutLabels = CleanAndReplaceLabels(uncommentFile);
+            List<string> fileWithoutLabels = CleanAndReplaceLabels(uncommentedFile);
 
             List<string> outputFile = ConvertToBinInstrucions(fileWithoutLabels);
 
-            File.WriteAllLines(hackPath, outputFile);
+            return hack_file;
         }
 
 
@@ -100,9 +112,7 @@ namespace ASM2HACK
         /// <returns></returns>
         private List<string> CleanCommentsAndSpaces()
         {
-            string cleanFilePath = this.directoryPath + @"\" + "cleanFile.txt";
-
-            List<string> uncommentedProgram = new List<string>();
+            List<string> uncommentededProgram = new List<string>();
 
             List<string> programWithoutSpaces = new List<string>();
 
@@ -115,27 +125,27 @@ namespace ASM2HACK
 
                     //Se il rigo del file non inizia con '/', '\n' oppure e' vuoto allora
                     //aggiungilo alla lista del programma
-                    if (!temp.StartsWith('/') && !temp.StartsWith('\n') && temp.Length >= 1) 
+                    if (!temp.StartsWith('/') && temp.Length >= 1) 
                     {
                         if (temp.Contains('/'))
                         {
-                            uncommentedProgram.Add(temp.RemoveAfter('/'));
+                            uncommentededProgram.Add(temp.RemoveAfter('/'));
                         }
                         else
                         {
-                            uncommentedProgram.Add(temp);
+                            uncommentededProgram.Add(temp);
                         }
                     }
                 }
 
                 //Leva gli spazi
-                foreach (string item in uncommentedProgram)
+                foreach (string item in uncommentededProgram)
                 {
                     programWithoutSpaces.Add(item.Trim());
                 }
 
                 //Debug
-                //File.WriteAllLines(cleanFilePath, programWithoutSpaces);
+                //File.WriteAllLines(filePath, programWithoutSpaces);
             }
             catch (FileNotFoundException ex)
             {
@@ -154,8 +164,6 @@ namespace ASM2HACK
         /// <returns></returns>
         private List<string> CleanAndReplaceLabels(List<string> uncommentFile)
         {
-            string fileWithoutLabelsPath = this.directoryPath + @"\" + "WLfile.txt";
-
             List<string> programWithoutLabels = new List<string>();
 
             //Cleaning and adding labels to the labels' list
