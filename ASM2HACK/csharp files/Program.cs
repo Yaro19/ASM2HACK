@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ASM2HACK.csharp_files
 {
-    //TODO: risolvere il bug del Pong.asm
     //TODO: realizzare l'avviso di sovrascrittura del file (se e' presente)
-    //TODO: se l'utente seleziona uno nuvo file allora svuota la textbox e hack_textbox
+	//TODO: quando l'utente salva il file, il deve avere il nome del file di input
+    //TODO: segnalazione errori + rigo errore
 
+	
     public static class Program
     {
         [STAThread]
